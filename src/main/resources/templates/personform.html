@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Person Demographics</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>Person Details</h2>
+    <div>
+        <form class="form-horizontal" th:object="${person}" th:action="@{/person}" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{name}"/>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">DOB Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">PPS Number</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{ppsNumber}"/>
+                    <td th:if="${#fields.hasErrors('ppsNumber')}" th:errors="*{ppsNumber}">PPS Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Date Of Birth</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{dateOfBirth}" placeholder="dd/MM/yyyy"/>
+                    <td th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">DOB Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Mobile Phone</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" th:field="*{phone}" placeholder="08"/>
+                    <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary center-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
